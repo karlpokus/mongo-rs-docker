@@ -1,7 +1,9 @@
 # mongo-rs-docker
-Multi-node mongodb replica set in docker. See https://hub.docker.com/_/mongo for custom configs.
+Single-, and multi-node mongodb replica set in docker. See https://hub.docker.com/_/mongo for custom configs.
 
-# usage
+The entrypoint of the mongo image is created to pass its arguments along to mongod. List all options with `docker run -it mongo:4.0.3 --help`
+
+# multi-node
 ```bash
 # create shared network
 $ docker network create mongo-rs
@@ -16,9 +18,10 @@ $ docker exec -it mongo-01 mongo
 > exit
 ```
 
-The entrypoint of the mongo image is created to pass its arguments along to mongod. List all options with `docker run -it mongo:4.0.3 --help`
-
-As we did not expose any nodes you have to add a client to the network to gain access.
+# single-node
+```bash
+$ docker-compose up
+```
 
 # license
 MIT

@@ -1,0 +1,13 @@
+version: '3'
+services:
+  mongo:
+    image: 'mongo:4.0.3'
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-test:/data
+      - ./rs-init.js:/docker-entrypoint-initdb.d/rs-init.js
+    restart: always
+    command: ["mongod", "--replSet", "rs0"]
+volumes:
+  mongo-test:
